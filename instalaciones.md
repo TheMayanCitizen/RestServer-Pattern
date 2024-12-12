@@ -14,7 +14,11 @@ http://localhost:8080/api/user/10?q=hola&name=alex&age=31
 - dotenv
 - express
 
+No te olvides de agregar tu script de "start" : "node app.js" en el package.json
+
 ## Crear un release tag
 
 `git tag -a v1.0.0 -m "Fin de seccion 8"`
 `git push --tags` : para subir los tags a github
+
+En github buscamos los tags, hacemos click en el tag que queremos, agregamos una descripcion y publicamos el relesea tag
