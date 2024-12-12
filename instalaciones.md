@@ -15,3 +15,6 @@ http://localhost:8080/api/user/10?q=hola&name=alex&age=31
 - express
 
 ## Crear un release tag
+
+`git tag -a v1.0.0 -m "Fin de seccion 8"`
+`git push --tags` : para subir los tags a github
