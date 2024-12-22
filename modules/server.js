@@ -1,16 +1,25 @@
 const express = require("express");
 const cors = require("cors");
+const { connectToDB } = require("../database/db.config");
 
 class Server {
   constructor() {
     this.app = express();
     this.port = process.env.PORT;
+    this.userPath = "/api/user";
+
+    //Connect to Database in Mongo
+    this.connectToDB();
 
     //Middlewares
     this.middlewares();
 
     //Routes
     this.routes();
+  }
+
+  async connectToDB() {
+    await connectToDB();
   }
 
   middlewares() {
@@ -25,7 +34,7 @@ class Server {
   }
 
   routes() {
-    this.app.use("/api/user", require("../routes/users.routes"));
+    this.app.use(this.userPath, require("../routes/users.routes"));
   }
 
   listen() {
