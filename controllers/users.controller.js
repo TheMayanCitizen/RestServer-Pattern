@@ -70,9 +70,14 @@ const deleteUsers = async (req, res = Response) => {
 
   //COMO SI SE DEBE HACER
   const user = await UserModel.findByIdAndUpdate(id, { status: false });
+
+  //Accediendo a la propiedad user que agregamos a la request en el validate-jwt.js
+  const userAuth = req.user;
+
   res.json({
     message: "Hello It's Tim from delete",
     user,
+    userAuth,
   });
 };
 

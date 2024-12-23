@@ -21,6 +21,7 @@ http://localhost:8080/api/user/10?q=hola&name=alex&age=31
 - moongose: npm install mongoose --save
 - bcrypt: npm i bcryptjs
 - express validator: npm i express-validator
+- jsonwebtoken:npm i jsonwebtoken
 
 ## Documentacion usada
 
@@ -39,3 +40,24 @@ En github buscamos los tags, hacemos click en el tag que queremos, agregamos una
 
 git rm .env --cached
 git add. git commit -m "env borrado"
+
+## Tarea - Desplegar en Railway
+
+Pasos para hacer el despliegue de su aplicación a Railway.
+
+1. Cambios en su repositorio
+
+- git checkout -b 3.0.0
+- git add .
+- git commit -m "Fin sección 10 - version 3.0.0"
+
+2. Crear y subir una rama
+
+- git push (Ese comando dará un error)
+- Usar el comando en la descripción del error para subir la rama.
+
+3. En Railway, seleccionar la rama 3.0.0 para desplegar
+
+4. Revisar si hay cambios en variables de entorno necesarias
+
+5. Esperar que el deployment se realice, si aparecen errores, tratar de corregirlos y probar de nuevo.

@@ -33,7 +33,8 @@ const UserSchema = Schema({
 
 //Asi evitamos que en la respuesta al frontend vayan tanto la version(__V) como el password
 UserSchema.methods.toJSON = function () {
-  const { __v, password, ...user } = this.toObject();
+  const { __v, password, _id, ...user } = this.toObject();
+  user.uid = _id; //Cambiamos todos los _id de las responses a "uid"
   return user;
 };
 
