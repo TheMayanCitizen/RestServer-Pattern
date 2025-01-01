@@ -22,12 +22,14 @@ http://localhost:8080/api/user/10?q=hola&name=alex&age=31
 - bcrypt: npm i bcryptjs
 - express validator: npm i express-validator
 - jsonwebtoken:npm i jsonwebtoken
+- google verify Token: npm install google-auth-library --save
 
 ## Documentacion usada
 
 - https://mongoosejs.com/docs/guide.html
 - https://www.npmjs.com/package/bcryptjs
 - https://www.npmjs.com/package/express-validator
+- https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid?hl=es-419
 
 ## Crear un release tag
 
@@ -41,7 +43,7 @@ En github buscamos los tags, hacemos click en el tag que queremos, agregamos una
 git rm .env --cached
 git add. git commit -m "env borrado"
 
-## Tarea - Desplegar en Railway
+## Desplegar en Railway
 
 Pasos para hacer el despliegue de su aplicación a Railway.
 
