@@ -28,7 +28,17 @@ const {
 const router = Router();
 
 // router.get("/:id", getUsers);
-router.get("/users", getUsers);
+router.get("/users",
+  [
+    query("limit", "The limit must be a number")
+      .isNumeric()
+      .optional(),
+    query("from", "The starting value must be a number")
+      .isNumeric()
+      .optional(),
+    validateFields,
+  ],
+  getUsers);
 
 router.put(
   "/:id",
@@ -50,9 +60,10 @@ router.post(
     }),
     check("email", "Invalid emal").isEmail(),
     check("email").custom(emailExist),
+    //Los roles es importante validarlos contra la DB con un helper(db-validator), creando una nueva Collection(MongoCompas) y un modelo(Schema)
     check("role").custom(validateRole),
     // check("role", "Enter a valid role").isIn(["ADMIN", "USER"]), otra forma de hacerlo
-    validateFields, //funcion para validar los campos
+    validateFields, //funcion para validar los campos verificar que la info se recibe como se necesita
   ],
   postUsers
 );
@@ -61,8 +72,8 @@ router.delete(
   "/:id",
   [
     validateJWT,
-    isAdminRole, //Verifica estrictamente que  user.role sea un role de ADMIN
-    hasRoles("ADMIN", "SALES"), //Verifica que user.rol sea uno de estos roles
+    isAdminRole, //Este middleware fuerza a que el usuario debe ser ADMIN para poder hacer cambios
+    hasRoles("ADMIN", "SALES"), //Verifica que el rol del usuario sea uno de estos roles,que estamos especificando
     check("id", "It's not a valid Id").isMongoId(),
     check("id").custom(userExists),
     validateFields,

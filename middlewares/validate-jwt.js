@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const UserModel = require("../models/User.model");
 
 const validateJWT = async (req = request, resp = response, next) => {
-  //leyendo los header donde viene el token
+  //leyendo los header donde viene el token, "x-token es el nombre que le pusimon en los headers de postman"
   const token = req.header("x-token");
 
   if (!token) {
@@ -17,7 +17,7 @@ const validateJWT = async (req = request, resp = response, next) => {
     //Verificamos el token que nos envian desde los headers y extraemos el uid de la verificacion
     const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
 
-    //Verificamos el usuario a partir del uid que extrajimos del jwt
+    //Buscamos el usuario a partir del uid que extraimos del jwt
     const user = await UserModel.findById(uid);
 
     //Validacion si usuario no existe
@@ -34,7 +34,7 @@ const validateJWT = async (req = request, resp = response, next) => {
       });
     }
 
-    //asignamos una nueva propiedad a la request que se llama uid con el valor del uid(de la valida jwt)
+    //asignamos una nueva propiedad a la request que se llama user con el valor del usuario que encontramos en la DB
     req.user = user;
     next();
   } catch (error) {

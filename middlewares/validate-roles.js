@@ -1,14 +1,17 @@
 const { request, response } = require("express");
 
 const isAdminRole = (req = request, res = response, next) => {
+
+  //Verificar que en la request(req) venga la propiedad user
   if (!req.user) {
     return res.status(500).json({
-      msg: "You must validate token before role",
+      msg: "You must validate token before verifying the role",
     });
   }
 
   const { role, name } = req.user;
 
+  //Verificamos el rol del usuario, si no es ADMIN no puede accedes
   if (role !== "ADMIN") {
     return res.status(401).json({
       msg: "Unauthorized role - must be an ADMIN",

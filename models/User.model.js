@@ -8,6 +8,7 @@ const UserSchema = Schema({
   email: {
     type: String,
     required: [true, "Password is required"],
+    // unique:true
   },
   password: {
     type: String,
@@ -31,7 +32,7 @@ const UserSchema = Schema({
   },
 });
 
-//Asi evitamos que en la respuesta al frontend vayan tanto la version(__V) como el password
+//Asi evitamos que en la respuesta al frontend vayan tanto la version(__V) como el password, con el ...user, indicamos que todas las demas propiedades si se envian al front
 UserSchema.methods.toJSON = function () {
   const { __v, password, _id, ...user } = this.toObject();
   user.uid = _id; //Cambiamos todos los _id de las responses a "uid"

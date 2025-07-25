@@ -22,7 +22,7 @@ const login = async (req, res = response) => {
     });
   }
 
-  //Verificar la password
+  //Verificar la password que me envia el usuario con la password de la DB
   const validPassword = bcryptjs.compareSync(password, user.password);
   if (!validPassword) {
     return res.status(400).json({

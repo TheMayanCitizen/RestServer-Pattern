@@ -7,7 +7,7 @@ class Server {
     this.app = express();
     this.port = process.env.PORT;
     this.userPath = "/api/user";
-    this.authPath = "/api/auth";
+    this.authPath = "/api/auth"; //Ruta para authenticacion del usuario
 
     //Connect to Database in Mongo
     this.connectToDB();

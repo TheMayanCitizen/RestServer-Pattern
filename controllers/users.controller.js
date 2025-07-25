@@ -30,6 +30,7 @@ const getUsers = async (req = Request, res = Response) => {
     usersRes,
   });
 };
+
 const putUsers = async (req, res = Response) => {
   const { id } = req.params;
   //En rest, agrupamos los datos que queremos actualizar, los otros valores son los que no debemos actualizar o se neceitan validaciones especificas para ellos.
